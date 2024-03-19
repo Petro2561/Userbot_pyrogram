@@ -1,16 +1,17 @@
 from dataclasses import dataclass
+
 from environs import Env
 from sqlalchemy import URL
 
 
 @dataclass
 class DatabaseConfig:
-    db: str         
+    db: str
 
 
 @dataclass
 class UserBot:
-    api_id: str            
+    api_id: str
     api_hash: str
 
 
@@ -25,11 +26,8 @@ def load_config(path: str | None = None) -> Config:
     env.read_env(path)
 
     return Config(
-        user_bot=UserBot(
-            api_id=env('API_ID'),
-            api_hash=env('API_HASH')
-        ),
+        user_bot=UserBot(api_id=env("API_ID"), api_hash=env("API_HASH")),
         db=DatabaseConfig(
-            db=env('DATABASE_URL'),
-        )
+            db=env("DATABASE_URL"),
+        ),
     )
