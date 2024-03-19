@@ -71,7 +71,7 @@ async def send_sales_message(client: Client, user: User, current_time: datetime)
     for delay_minutes, message_text in SCENARIO.items():
         delay_time = user.created_at + timedelta(minutes=delay_minutes)
         if user.last_message_sent < delay_minutes and current_time >= delay_time:
-            await send_message_safe(client=client, chat_id=user.id, text=message_text)
+            await send_message_safe(client=client, user_id=user.id, text=message_text)
             user.last_message_sent = delay_minutes
             if delay_minutes == LAST_MESSAGE_DELAY:
                 user.status = FINISHED_STATUS
