@@ -29,7 +29,7 @@ FINISHED_STATUS = "finished"
 BLOCKED_MESSAGE = "Юзербот был заблокирован пользователем {user_id}."
 DEACTIVATED_MESSAGE = "Пользователь {user_id} некативен."
 ERROR_MESSAGE = "Ошибка отправки сообщения{user_id}: {error}"
-
+RECEIVED_MESSAGE_LOG = "Получено сообщение от {}: {}"
 
 logger = logging.getLogger(__name__)
 
@@ -39,7 +39,7 @@ async def handle_message(client: Client, message: Message):
     async with async_session() as session:
         async with session.begin():
             user_id = message.from_user.id
-            logger.info(f"Получено сообщение от {user_id}: {message.text}")
+            logger.info(RECEIVED_MESSAGE_LOG.format(user_id, message.text))
             user = await get_or_create_user(user_id, session)
             user.status_updated_at = datetime.now()
             if not await check_message_for_triggers(message.text):
