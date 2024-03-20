@@ -61,7 +61,6 @@ async def check_and_send_messages(client: Client):
                 users_to_notify = result.scalars().all()
                 for user in users_to_notify:
                     await send_sales_message(client, user, current_time)
-
                 await session.commit()
         await asyncio.sleep(60)
 

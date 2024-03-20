@@ -14,7 +14,7 @@ async def main():
     config = load_config()
     await async_main()
     user_bot = Client(
-        "my_user_bot", api_id=config.user_bot.api_id, api_hash=config.user_bot.api_hash
+        "my_user_bot", api_id=config.user_bot.api_id, api_hash=config.user_bot.api_hash, test_mode=True
     )
     user_bot.add_handler(MessageHandler(handle_message, filters.text & filters.private))
     await user_bot.start()

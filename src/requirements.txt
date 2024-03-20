@@ -1,0 +1,17 @@
+aiosqlite==0.20.0
+asqlite3==0.0.1
+async-timeout==4.0.3
+asyncpg==0.29.0
+cfgv==3.4.0
+distlib==0.3.8
+filelock==3.13.1
+greenlet==3.0.3
+identify==2.5.35
+nodeenv==1.8.0
+platformdirs==4.2.0
+pre-commit==3.6.2
+python-dotenv==1.0.1
+PyYAML==6.0.1
+SQLAlchemy==2.0.28
+typing_extensions==4.10.0
+virtualenv==20.25.1
